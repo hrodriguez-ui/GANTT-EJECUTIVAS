@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>GANTT Ejecutivas Mar-May 2026</title>
+<style>
+*{box-sizing:border-box;}
+body{font-family:system-ui,sans-serif;background:#fff;color:#1a1a1a;margin:0;padding:16px 20px;font-size:13px;}
+h1{font-size:16px;font-weight:500;margin:0 0 3px;}
+.sub{font-size:11.5px;color:#666;margin-bottom:14px;}
+.tabs{display:flex;gap:6px;margin-bottom:10px;}
+.tab{cursor:pointer;padding:6px 16px;border-radius:8px;font-size:12px;font-weight:500;border:0.5px solid #ccc;background:transparent;color:#555;}
+.tab.active{background:#f1f1f1;color:#111;border-color:#999;}
+.legend{display:flex;gap:14px;font-size:11px;color:#555;margin-bottom:10px;align-items:center;flex-wrap:wrap;}
+.ldot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:middle;}
+.gw{overflow:auto;max-height:560px;border:1px solid #e0e0e0;border-radius:8px;}
+table{border-collapse:collapse;min-width:960px;width:100%;}
+th,td{font-size:10px;padding:2px 3px;white-space:nowrap;}
+.mh{text-align:center;font-weight:500;font-size:10px;color:#555;background:#f8f8f8;border-bottom:1px solid #ddd;padding:4px 2px;}
+.wh{text-align:center;font-size:9.5px;color:#888;border-bottom:1.5px solid #ccc;padding:3px 2px;}
+.cc{position:sticky;left:0;z-index:2;background:#fff;border-right:1px solid #ccc;min-width:152px;max-width:152px;font-size:11px;color:#111;padding:3px 6px;overflow:hidden;text-overflow:ellipsis;}
+.cc.hd{background:#f8f8f8;font-weight:500;color:#555;font-size:10px;}
+.wc{text-align:center;border-right:0.5px solid #eee;min-width:46px;padding:2px 1px;}
+.wc.sw{border-left:1px dashed #ddd;}
+.ds{display:inline-flex;gap:2px;align-items:center;justify-content:center;height:15px;}
+.d1{width:8px;height:8px;border-radius:2px;display:inline-block;}
+.or{background:#f8f8f8;}
+tr:hover td{background:#f5f5f5;}
+tr:hover .cc{background:#f5f5f5;}
+.email-row td{padding:2px 1px;}
+.email-row .cc{background:#fafafa;font-size:10px;color:#888;font-style:italic;}
+.ecell{text-align:center;border-right:0.5px solid #eee;padding:1px;}
+.ecell.sw{border-left:1px dashed #ddd;}
+.ebar{display:inline-block;border-radius:2px;min-width:6px;height:10px;}
+
+/* Summary section */
+.sum-wrap{margin-top:24px;border-top:1px solid #e0e0e0;padding-top:18px;}
+.sum-title{font-size:14px;font-weight:500;color:#111;margin:0 0 14px;}
+.sum-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.sum-card{border:0.5px solid #e0e0e0;border-radius:10px;padding:16px 20px;background:#fafafa;}
+.sum-name{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;}
+.sum-name span{font-size:14px;font-weight:500;}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.metric{background:#fff;border:0.5px solid #e8e8e8;border-radius:8px;padding:10px 12px;}
+.mlabel{font-size:10px;color:#888;margin:0 0 3px;text-transform:uppercase;letter-spacing:.03em;}
+.mval{font-size:22px;font-weight:500;color:#111;margin:0;}
+.msub{font-size:10px;color:#999;margin:3px 0 0;}
+.mbar{height:3px;border-radius:2px;margin-top:6px;}
+.trend{margin-top:14px;}
+.trend-title{font-size:10px;color:#888;margin-bottom:6px;text-transform:uppercase;letter-spacing:.03em;}
+.trend-bars{display:flex;align-items:flex-end;gap:2px;height:36px;}
+.tbar{flex:1;border-radius:2px 2px 0 0;min-height:2px;}
+.trend-labels{display:flex;gap:2px;margin-top:2px;}
+.tlabel{flex:1;text-align:center;font-size:8px;color:#bbb;}
+.note{margin-top:10px;font-size:10.5px;color:#999;}
+</style>
+</head>
+<body>
+<h1>GANTT de Actividades por Empresa — International Pipeline</h1>
+<p class="sub">Andrea Garza · Denisse Arizpe &nbsp;·&nbsp; Marzo – Mayo 2026 &nbsp;·&nbsp; Cotizaciones, Llamadas, Reuniones y Correos</p>
+
+<div class="tabs">
+  <button class="tab active" id="t-a">Ambas</button>
+  <button class="tab" id="t-ag">Andrea Garza</button>
+  <button class="tab" id="t-da">Denisse Arizpe</button>
+</div>
+
+<div class="legend">
+  <span><span class="ldot" style="background:#534AB7;"></span>Cotización / Deal</span>
+  <span><span class="ldot" style="background:#1D9E75;"></span>Llamada</span>
+  <span><span class="ldot" style="background:#BA7517;"></span>Reunión</span>
+  <span><span class="ldot" style="background:#185FA5;"></span>Correos (volumen semanal por ejecutiva)</span>
+</div>
+
+<div class="gw">
+  <table>
+    <thead>
+      <tr>
+        <th class="cc hd" rowspan="2">Empresa</th>
+        <th colspan="5" class="mh" style="border-left:1px solid #ccc;">Marzo</th>
+        <th colspan="4" class="mh" style="border-left:1px dashed #ddd;">Abril</th>
+        <th colspan="4" class="mh" style="border-left:1px dashed #ddd;">Mayo</th>
+      </tr>
+      <tr>
+        <th class="wh" style="border-left:1px solid #ccc;">2</th>
+        <th class="wh">9</th><th class="wh">16</th><th class="wh">23</th><th class="wh">30</th>
+        <th class="wh sw">6</th><th class="wh">13</th><th class="wh">20</th><th class="wh">27</th>
+        <th class="wh sw">4</th><th class="wh">11</th><th class="wh">18</th><th class="wh">25</th>
+      </tr>
+    </thead>
+    <tbody id="gb"></tbody>
+  </table>
+</div>
+<p class="note">* Los correos se muestran a nivel ejecutiva por semana (escala de intensidad de color) — los datos de la API de HubSpot no permiten segmentación de correos por empresa individual.</p>
+
+<!-- SUMMARY SECTION -->
+<div class="sum-wrap">
+  <p class="sum-title">Resumen de actividades — Marzo a Mayo 2026</p>
+  <div class="sum-grid">
+    <!-- ANDREA -->
+    <div class="sum-card">
+      <div class="sum-name">
+        <div class="avatar" style="background:#EEEDFE;color:#3C3489;">AG</div>
+        <span>Andrea Garza</span>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <p class="mlabel">Cotizaciones</p>
+          <p class="mval">114</p>
+          <p class="msub">Mar 32 · Abr 37 · May 45</p>
+          <div class="mbar" style="background:#534AB7;width:100%;"></div>
+        </div>
+        <div class="metric">
+          <p class="mlabel">Llamadas</p>
+          <p class="mval">782</p>
+          <p class="msub">en International Pipeline</p>
+          <div class="mbar" style="background:#1D9E75;width:100%;"></div>
+        </div>
+        <div class="metric">
+          <p class="mlabel">Reuniones</p>
+          <p class="mval">21</p>
+          <p class="msub">Mar-May 2026</p>
+          <div class="mbar" style="background:#BA7517;width:100%;"></div>
+        </div>
+        <div class="metric">
+          <p class="mlabel">Correos</p>
+          <p class="mval">3,600</p>
+          <p class="msub">volumen total enviado</p>
+          <div class="mbar" style="background:#185FA5;width:100%;"></div>
+        </div>
+      </div>
+      <div class="trend">
+        <p class="trend-title">Correos por semana</p>
+        <div class="trend-bars" id="ag-trend"></div>
+        <div class="trend-labels">
+          <span class="tlabel">2M</span><span class="tlabel">9M</span><span class="tlabel">16M</span>
+          <span class="tlabel">23M</span><span class="tlabel">30M</span><span class="tlabel">6A</span>
+          <span class="tlabel">13A</span><span class="tlabel">20A</span><span class="tlabel">27A</span>
+          <span class="tlabel">4My</span><span class="tlabel">11My</span><span class="tlabel">18My</span>
+          <span class="tlabel">25My</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DENISSE -->
+    <div class="sum-card">
+      <div class="sum-name">
+        <div class="avatar" style="background:#E1F5EE;color:#085041;">DA</div>
+        <span>Denisse Arizpe</span>
+      </div>
+      <div class="metrics">
+        <div class="metric">
+          <p class="mlabel">Cotizaciones</p>
+          <p class="mval">61</p>
+          <p class="msub">Mar 23 · Abr 19 · May 19</p>
+          <div class="mbar" style="background:#534AB7;width:61%;"></div>
+        </div>
+        <div class="metric">
+          <p class="mlabel">Llamadas</p>
+          <p class="mval">809</p>
+          <p class="msub">en International Pipeline</p>
+          <div class="mbar" style="background:#1D9E75;width:100%;"></div>
+        </div>
+        <div class="metric">
+          <p class="mlabel">Reuniones</p>
+          <p class="mval">12</p>
+          <p class="msub">Mar-May 2026</p>
+          <div class="mbar" style="background:#BA7517;width:57%;"></div>
+        </div>
+        <div class="metric">
+          <p class="mlabel">Correos</p>
+          <p class="mval">2,176</p>
+          <p class="msub">volumen total enviado</p>
+          <div class="mbar" style="background:#185FA5;width:60%;"></div>
+        </div>
+      </div>
+      <div class="trend">
+        <p class="trend-title">Correos por semana</p>
+        <div class="trend-bars" id="da-trend"></div>
+        <div class="trend-labels">
+          <span class="tlabel">2M</span><span class="tlabel">9M</span><span class="tlabel">16M</span>
+          <span class="tlabel">23M</span><span class="tlabel">30M</span><span class="tlabel">6A</span>
+          <span class="tlabel">13A</span><span class="tlabel">20A</span><span class="tlabel">27A</span>
+          <span class="tlabel">4My</span><span class="tlabel">11My</span><span class="tlabel">18My</span>
+          <span class="tlabel">25My</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMBINED TOTALS -->
+  <div style="margin-top:16px;border:0.5px solid #e0e0e0;border-radius:10px;padding:14px 20px;background:#f9f9f9;">
+    <p style="font-size:12px;font-weight:500;color:#555;margin:0 0 12px;">Totales combinados del equipo</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:500;color:#534AB7;">175</div>
+        <div style="font-size:11px;color:#888;margin-top:2px;">Cotizaciones</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:500;color:#1D9E75;">1,591</div>
+        <div style="font-size:11px;color:#888;margin-top:2px;">Llamadas</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:500;color:#BA7517;">33</div>
+        <div style="font-size:11px;color:#888;margin-top:2px;">Reuniones</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:24px;font-weight:500;color:#185FA5;">5,776</div>
+        <div style="font-size:11px;color:#888;margin-top:2px;">Correos</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const W=13;
+const ag=[
+  {n:'CFI',d:[0,7,8,9,12],l:[12],r:[],e:[]},
+  {n:'EgeTrans',d:[0,1],l:[0,1,6],r:[],e:[]},
+  {n:'Logistics Plus',d:[0,1,2,3,4,5,6,7,8,12],l:[12],r:[],e:[]},
+  {n:'Eternity',d:[1,2,3,4,6,7,9,10],l:[1,2,3,4],r:[],e:[]},
+  {n:'LUAL CARGO',d:[1,10],l:[1,12],r:[],e:[]},
+  {n:'Valiton Corp',d:[1],l:[],r:[],e:[]},
+  {n:'EPES',d:[2,3,5,6,8,9,10],l:[2,3],r:[],e:[]},
+  {n:'Real Shipping',d:[3,5,9,12],l:[0],r:[0],e:[]},
+  {n:'ATP Montana',d:[3],l:[5],r:[],e:[]},
+  {n:'Empirenational',d:[3],l:[],r:[],e:[]},
+  {n:'GLM Group',d:[3],l:[3,5,10,12],r:[],e:[]},
+  {n:'LUTHA LOGISTICS',d:[3,5,6],l:[3,5,6],r:[6],e:[]},
+  {n:'TQL',d:[3,5,9,10],l:[0,9,10,11,12],r:[],e:[]},
+  {n:'HAD Logistics',d:[4,5,9,12],l:[3,4,5,12],r:[],e:[]},
+  {n:'landstarmail.com',d:[4],l:[],r:[],e:[]},
+  {n:'Loger',d:[4,12],l:[12],r:[],e:[]},
+  {n:'MONTELO EXPRESS',d:[5],l:[],r:[],e:[]},
+  {n:'ALREDEDOR DEL MUNDO',d:[5],l:[],r:[],e:[]},
+  {n:'ArcelorMittal',d:[5],l:[],r:[],e:[]},
+  {n:'IFL Mexico',d:[5],l:[],r:[],e:[]},
+  {n:'Multitrans',d:[5,10],l:[],r:[],e:[]},
+  {n:'VICTORIA LINE',d:[6],l:[],r:[],e:[]},
+  {n:'Bucks Logistics',d:[6],l:[],r:[],e:[]},
+  {n:'Credimister',d:[6],l:[],r:[],e:[]},
+  {n:'Frolsa',d:[7],l:[],r:[],e:[]},
+  {n:'ODL International',d:[8],l:[],r:[],e:[]},
+  {n:'ACF Global Log.',d:[8,9],l:[],r:[9],e:[]},
+  {n:'EA LOGISTICA',d:[9,10,12],l:[],r:[11],e:[]},
+  {n:'Intermove',d:[9],l:[],r:[],e:[]},
+  {n:'ETR Mexico',d:[9],l:[],r:[],e:[]},
+  {n:'WR Controls',d:[10],l:[],r:[10],e:[]},
+  {n:'ICAT Logistics',d:[10],l:[],r:[10],e:[]},
+  {n:'GREEN CUBE',d:[10],l:[],r:[],e:[]},
+  {n:'Grupo Venti',d:[10],l:[],r:[],e:[]},
+  {n:'vazeli.com',d:[10],l:[],r:[],e:[]}
+];
+const da=[
+  {n:'INTERLOADING',d:[0],l:[],r:[],e:[]},
+  {n:'Logistic KYA',d:[0],l:[],r:[],e:[]},
+  {n:'Estes Forwarding',d:[0,2,7],l:[],r:[],e:[]},
+  {n:'Fastcargolog.',d:[1,3,4,5,6],l:[],r:[],e:[]},
+  {n:'Rhenus Logistics',d:[1],l:[],r:[],e:[]},
+  {n:'Logisti-K',d:[1],l:[],r:[],e:[]},
+  {n:'BONANZA',d:[2,4],l:[],r:[],e:[]},
+  {n:'INOVAT TECH.',d:[2,4],l:[3,12],r:[],e:[]},
+  {n:'Sciens Logistics',d:[3],l:[],r:[],e:[]},
+  {n:'Farco Logistics',d:[3],l:[],r:[],e:[]},
+  {n:'Flexigroup',d:[3,4],l:[],r:[],e:[]},
+  {n:'Penske Corp.',d:[3],l:[8,9],r:[],e:[]},
+  {n:'ADL FORWARDING',d:[5,9,12],l:[],r:[],e:[]},
+  {n:'Interlink',d:[5,7],l:[],r:[],e:[]},
+  {n:'Bluefox Cargo',d:[5,7,8],l:[8,9,10,11],r:[],e:[]},
+  {n:'BEM',d:[5],l:[],r:[],e:[]},
+  {n:'Pegasus Logist.',d:[5],l:[0],r:[],e:[]},
+  {n:'TREFA LOGISTIC',d:[5],l:[5,6],r:[],e:[]},
+  {n:'Can Forwarding',d:[7],l:[],r:[],e:[]},
+  {n:'EG CARGO',d:[9],l:[3],r:[],e:[]},
+  {n:'IRON TRUST',d:[9],l:[],r:[],e:[]},
+  {n:'WR Controls',d:[9],l:[],r:[],e:[]},
+  {n:'Kaza Logistics',d:[9],l:[],r:[9],e:[]},
+  {n:'PSM ACERO',d:[10],l:[],r:[],e:[]},
+  {n:'HITACHI',d:[10],l:[2,3],r:[],e:[]},
+  {n:'53 Cargo',d:[12],l:[],r:[11],e:[]},
+  {n:'KLN Mexico',d:[12],l:[7,12],r:[7],e:[]},
+  {n:'UNIVERSAL CARGO',d:[12],l:[],r:[],e:[]},
+  {n:'Rh Shipping',d:[10],l:[],r:[],e:[]}
+];
+
+// Emails por semana (volumen total por ejecutiva)
+const agEmails=[39,120,85,209,97,202,42,305,38,629,395,867,572];
+const daEmails=[104,99,123,47,73,103,70,345,36,213,172,546,242];
+const agEmax=Math.max(...agEmails);
+const daEmax=Math.max(...daEmails);
+
+// Intensidad del color del ebar en el GANTT
+function emailColor(val,max){
+  const p=val/max;
+  if(p<0.1)return'#cfe3f5';
+  if(p<0.25)return'#85B7EB';
+  if(p<0.5)return'#378ADD';
+  if(p<0.75)return'#185FA5';
+  return'#0C447C';
+}
+
+const sw=new Set([5,9]);
+
+function mkGrid(c){
+  const g=Array.from({length:W},()=>({d:0,l:0,r:0}));
+  c.d.forEach(w=>{if(w<W)g[w].d=1;});
+  c.l.forEach(w=>{if(w<W)g[w].l=1;});
+  c.r.forEach(w=>{if(w<W)g[w].r=1;});
+  return g;
+}
+
+function dots(a){
+  if(!a.d&&!a.l&&!a.r)return '';
+  let h='<div class="ds">';
+  if(a.d)h+='<span class="d1" style="background:#534AB7;"></span>';
+  if(a.l)h+='<span class="d1" style="background:#1D9E75;"></span>';
+  if(a.r)h+='<span class="d1" style="background:#BA7517;"></span>';
+  return h+'</div>';
+}
+
+function emailRow(label, emails, emax){
+  let h=`<tr class="email-row"><td class="cc" style="font-size:10px;color:#888;font-style:italic;background:#f9f9f9;">&#9993; ${label} (correos)</td>`;
+  for(let w=0;w<W;w++){
+    const cl='ecell'+(sw.has(w)?' sw':'');
+    const v=emails[w];
+    const bg=emailColor(v,emax);
+    h+=`<td class="${cl}" style="background:#f9f9f9;"><span class="ebar" style="background:${bg};width:${Math.max(16,Math.round(36*v/emax))}px;" title="${v} correos"></span></td>`;
+  }
+  return h+'</tr>';
+}
+
+function secRows(list,label,clr,emails,emax){
+  let h=`<tr class="or"><td class="cc" colspan="14" style="font-weight:500;font-size:11px;color:${clr};border-top:1px solid #ddd;padding:5px 6px;">${label}</td></tr>`;
+  h+=emailRow(label.split(' ')[0]+' '+label.split(' ')[1], emails, emax);
+  list.forEach(c=>{
+    const g=mkGrid(c);
+    h+='<tr>';
+    h+=`<td class="cc" title="${c.n}">${c.n}</td>`;
+    for(let w=0;w<W;w++){
+      const cl='wc'+(sw.has(w)?' sw':'');
+      h+=`<td class="${cl}">${dots(g[w])}</td>`;
+    }
+    h+='</tr>';
+  });
+  return h;
+}
+
+function render(v){
+  let html='';
+  if(v!=='da') html+=secRows(ag,'Andrea Garza','#534AB7',agEmails,agEmax);
+  if(v!=='ag') html+=secRows(da,'Denisse Arizpe','#1D9E75',daEmails,daEmax);
+  document.getElementById('gb').innerHTML=html;
+}
+
+// Trend bars for summary
+function buildTrend(containerId, emails, color){
+  const max=Math.max(...emails);
+  const el=document.getElementById(containerId);
+  el.innerHTML=emails.map(v=>`<div class="tbar" style="background:${color};height:${Math.max(3,Math.round(36*v/max))}px;" title="${v}"></div>`).join('');
+}
+
+document.getElementById('t-a').onclick=()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('t-a').classList.add('active');render('a');};
+document.getElementById('t-ag').onclick=()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('t-ag').classList.add('active');render('ag');};
+document.getElementById('t-da').onclick=()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('t-da').classList.add('active');render('da');};
+
+render('a');
+buildTrend('ag-trend', agEmails, '#185FA5');
+buildTrend('da-trend', daEmails, '#1D9E75');
+</script>
+</body>
+</html>
